@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Ваша корзина товаров
+{% endblock %}
+
+{% block content %}
+<section class="product_section ">
+  <div class="container">
+    <div class="product_heading">
+        <h2>
+          Shopping Cart
+        </h2>
+      </div>
+    <section class="h-100" style="background-color: #eee;">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-10">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#" class="text-body">price <i
+                      class="fa fa-angle-down mt-1"></i></a></p>
+              </div>
+            </div>
+            {% for item in cart %}
+            <div class="card rounded-3 mb-4">
+              <div class="card-body p-4">
+                <div class="row d-flex justify-content-between align-items-center">
+                  <div class="col-md-2 col-lg-2 col-xl-2">
+                    <img
+                      src="{{ item.product.image.url }}"
+                      class="img-fluid rounded-3" alt="{{ item.product.name }}">
+                  </div>
+                  <div class="col-md-3 col-lg-3 col-xl-3">
+                    <p class="lead fw-normal mb-2">{{ item.product.name }}</p>
+                  </div>
+                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                    <button class="btn btn-link px-2"
+                      onclick="var input_obj = this.parentNode.querySelector('input[id=form-product]');
+                              input_obj.stepDown();
+                              if (decrease_quantity_product({{item.product.id}}, input_obj.value) == 0) {
+                                input_obj.stepUp();
+                              };">
+                      <i class="fa fa-minus"></i>
+                    </button>
+
+                    <input id="form-product" min="1" max="{{ item.stock }}" name="quantity" value="{{ item.quantity }}" type="number"
+                      class="form-control form-control-sm" />
+
+                    <button class="btn btn-link px-2"
+                      onclick="var input_obj = this.parentNode.querySelector('input[id=form-product]');
+                              input_obj.stepUp();
+                              if (increase_quantity_product({{item.product.id}}, input_obj.value) == 0) {
+                                input_obj.stepDown();
+                              };">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                    <h5 class="mb-0">{{ item.product.price }} руб.</h5>
+                  </div>
+                  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                    <a href="{% url 'cart_remove' item.product.id %}" class="text-danger"><i class="fa fa-trash fa-lg"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="card mb-4">
+              <div class="card-body p-4 d-flex flex-row">
+                Total: {{ cart.get_total_price }} руб.
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <a type="button" href="{% url 'order_create' %}" class="btn btn-primary btn-block btn-lg">Proceed</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<script type="text/javascript">
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function increase_quantity_product(product_id, input_value) {
+  const csrftoken = getCookie('csrftoken');
+  axios.post(
+    `/cart/update/${product_id}/`,
+    {quantity: input_value},
+    {headers: {'X-CSRFToken': csrftoken}},
+  )
+  .then(function (response) {
+    return 1;
+  })
+  .catch(function (error) {
+    console.log(error);
+    return 0;
+  });
+}
+
+function decrease_quantity_product(product_id, input_value) {
+  const csrftoken = getCookie('csrftoken');
+  axios.post(
+    `/cart/update/${product_id}/`,
+    {quantity: input_value},
+    {headers: {'X-CSRFToken': csrftoken}},
+  )
+  .then(function (response) {
+    return true;
+  })
+  .catch(function (error) {
+    console.log(error);
+    return false;
+  });
+}
+</script>
+
+{% endblock %}

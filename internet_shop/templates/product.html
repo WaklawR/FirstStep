@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="row">
+   <div class="col-md-12">
+      <div class="our_products">
+            <div class="col-md-4" style="text-align: center; max-width: 100%;">
+                  <figure><img class="picture" src="/media/{{product.image}}" width="200px" height="200px" alt="product"></figure>
+                  <h2 style="color: #2e9b9b;">{{product.name}}</h2>
+                  <h2>{{product.price}} р.</h2>
+                  <h2>{{product.stock}} ед. {% if product.available %}<b style="color: green;">Доступен</b>{% else %}<b style="color: red;">Недоступен</b>{% endif %}</h2>
+                  <div style="text-align: justify;"><b>Описание:</b> {{product.description}}</div>
+                  <p style="text-align: justify;"><b>Категория товара:</b> {{product.subcategory.name}}</p>
+            </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

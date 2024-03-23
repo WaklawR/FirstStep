@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block about %}
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img_container">
+<!--            <div class="img-box b1">-->
+<!--            </div>-->
+<!--            <div class="img-box b2">-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <h2>
+              About Our Shop
+            </h2>
+            <p>
+              [about]
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end about section -->
+{% endblock %}
+{% block content %}
+  <!-- product section -->
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        <h2>
+          Top Sale Products
+        </h2>
+      </div>
+      <div class="product_container">
+        <div class="box">
+          <div class="box-content">
+<!--            <div class="img-box">-->
+<!--            </div>-->
+            <div class="detail-box">
+              <div class="text">
+                <h6>
+                  Product
+                </h6>
+                <h5>
+                  <span>$</span> 5
+                </h5>
+              </div>
+              <div class="like">
+                <h6>
+                  Like
+                </h6>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-box">
+            <a href="">
+              Add To Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end product section -->
+
+  <!-- product section -->
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        <h2>
+          Feature Products
+        </h2>
+      </div>
+      <div class="product_container">
+        <div class="box">
+          <div class="box-content">
+<!--            <div class="img-box">-->
+<!--            </div>-->
+            <div class="detail-box">
+              <div class="text">
+                <h6>
+                  Feature
+                </h6>
+                <h5>
+                  <span>$</span> 5
+                </h5>
+              </div>
+              <div class="like">
+                <h6>
+                  Like
+                </h6>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-box">
+            <a href="">
+              Add To Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end product section -->
+
+  <!-- product section -->
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        <h2>
+          New Arrivals
+        </h2>
+      </div>
+      <div class="product_container">
+        <div class="box">
+          <div class="box-content">
+<!--            <div class="img-box">-->
+<!--            </div>-->
+            <div class="detail-box">
+              <div class="text">
+                <h6>
+                  New product
+                </h6>
+                <h5>
+                  <span>$</span> 5
+                </h5>
+              </div>
+              <div class="like">
+                <h6>
+                  Like
+                </h6>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-box">
+            <a href="">
+              Add To Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end product section -->
+{% endblock %}
+
+{% block contact %}
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="">
+              <div>
+                <input type="text" placeholder="Your Name" />
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" />
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+{% endblock %}
+

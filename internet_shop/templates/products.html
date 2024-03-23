@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+{% block content %}
+
+  <!-- product section -->
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        <h2>
+          Products
+        </h2>
+      </div>
+      <div class="product_container">
+      {% if products %}
+          {% for product in products %}
+            <div class="box">
+              <div class="box-content">
+                <div style="text-align: -moz-center;text-align: center;" onclick="window.location='{% url 'product_details' product.id %}'">
+                  <div class="img-box">
+                    <img src="/media/{{product.image}}" alt="product" width="200px" height="200px"/>
+                  </div>
+                  <div class="detail-box">
+                    <div class="text">
+                      <h6>
+                        {{product.name}}
+                      </h6>
+                      <h5>
+                        {{product.price}}<span> руб.</span>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+                <form action="{% url 'cart_add' product.id %}" method="post">
+                 {% csrf_token %}
+                 <input class="btn-box" type="submit" value="Add to Cart">
+                </form>
+              </div>
+
+            </div>
+          {% endfor %}
+      {% else %}
+          Продуктов нет
+      {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- end product section -->
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<!--<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>-->
+
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+            Sign Up
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form method="POST" action="/accounts/signup/">
+                    {% csrf_token %}
+                         <div>
+                            <input type="text" name="username" placeholder="Username" autocomplete="username" minlength="1" maxlength="150" required="" id="id_username">
+                         </div>
+                         <div>
+                            <input type="email" name="email" placeholder="Email address" autocomplete="email" maxlength="320" id="id_email">
+                         </div>
+                         <div >
+                            <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required="" aria-describedby="id_password1_helptext" id="id_password1">
+                         </div>
+<!--                         <ul style="color: white; position: relative; left: 20px;">-->
+<!--                            <li>Your password can’t be too similar to your other personal information.</li>-->
+<!--                            <li>Your password must contain at least 8 characters.</li>-->
+<!--                            <li>Your password can’t be a commonly used password.</li>-->
+<!--                            <li>Your password can’t be entirely numeric.</li>-->
+<!--                         </ul>-->
+                         <div>
+                            <input type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required="" id="id_password2">
+                         </div>
+                         <div>
+                            <button type="submit" class="btn_box">Sign Up</button>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

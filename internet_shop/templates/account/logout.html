@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Sign Out{% endblock %}
+
+{% block content %}
+
+<!--<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>-->
+
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+            Sign Out
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form method="post" action="/accounts/logout/">
+                    {% csrf_token %}
+                        <h2>Are you sure?</h2>
+                        <div class="btn_box">
+                           <button type="submit">Sign Out</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

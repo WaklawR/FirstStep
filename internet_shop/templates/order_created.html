@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Thank you{% endblock %}
+
+{% block content %}
+<section class="product_section ">
+  <div class="container">
+    <div class="product_heading">
+        <h2>
+          Order Details
+        </h2>
+      </div>
+    <section class="h-100" style="background-color: #eee;">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-10">
+
+            {% for item in cart %}
+                {{ item.quantity }}x {{ item.product.name }}
+                <span>{{ item.total_price }} руб.</span>
+            {% endfor %}
+            <div class="card mb-4">
+              <div class="p-4 d-flex flex-row">
+                Total: {{ cart.get_total_price }} руб.
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <h1>Thank you</h1>
+                <p>Your order has been successfully completed. Your order number is
+                    <strong>{{ order.id }}</strong>.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+{% endblock %}

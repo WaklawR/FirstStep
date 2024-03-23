@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<section class="product_section ">
+  <div class="container">
+    <div class="product_heading">
+        <h2>
+          Checkout
+        </h2>
+      </div>
+
+    <section class="h-100" style="background-color: #eee;">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-10">
+
+            {% for item in cart %}
+                {{ item.quantity }}x {{ item.product.name }}
+                <span>{{ item.total_price }} руб.</span>
+            {% endfor %}
+            <div class="card mb-4">
+              <div class="p-4 d-flex flex-row">
+                Total: {{ cart.get_total_price }} руб.
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                  <section class="contact_section layout_padding">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6" style="flex: auto;max-width: 100%;">
+                                    <div class="form_container">
+                                        <form action="." method="post" class="order-form">
+                                          {% csrf_token %}
+                                          {{ form.as_p }}
+                                          <input class="btn btn-primary btn-block btn-lg" type="submit" value="Place order">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+{% endblock %}
